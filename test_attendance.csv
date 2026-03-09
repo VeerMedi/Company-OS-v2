@@ -1,0 +1,21 @@
+Employee Code,Date (YYYY-MM-DD),Punch In (HH:MM),Punch Out (HH:MM),Status,Notes
+DEV002,2026-01-01,11:00,19:00,Present,Regular day
+DEV001,2026-01-01,11:05,19:10,Present,Regular day
+EMP001,2026-01-01,11:10,19:05,Present,Regular day
+INT001,2026-01-01,11:15,19:15,Present,Regular day
+DEV002,2026-01-02,11:00,19:00,Present,Regular day
+DEV001,2026-01-02,11:00,19:00,Present,Regular day
+EMP001,2026-01-02,11:00,19:00,Present,Regular day
+INT001,2026-01-02,11:00,19:00,Present,Regular day
+DEV002,2026-01-03,11:00,19:00,Present,Regular day
+DEV001,2026-01-03,11:00,19:00,Present,Regular day
+EMP001,2026-01-03,11:00,19:00,Present,Regular day
+INT001,2026-01-03,11:00,19:00,Present,Regular day
+DEV002,2026-01-04,00:00,00:00,Weekly Off,Weekend
+DEV001,2026-01-04,00:00,00:00,Weekly Off,Weekend
+EMP001,2026-01-04,00:00,00:00,Weekly Off,Weekend
+INT001,2026-01-04,00:00,00:00,Weekly Off,Weekend
+DEV002,2026-01-05,11:00,19:00,Present,Regular day
+DEV001,2026-01-05,11:00,19:00,Present,Regular day
+EMP001,2026-01-05,11:00,19:00,Present,Regular day
+INT001,2026-01-05,11:00,19:00,Present,Regular day

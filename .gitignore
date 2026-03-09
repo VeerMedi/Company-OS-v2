@@ -1,0 +1,155 @@
+# ============================================
+# Environment & Secrets — NEVER commit these
+# ============================================
+.env
+.env.*
+!.env.example
+!.env.sample
+config.env
+*.env
+
+# ============================================
+# Operating System Files
+# ============================================
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# ============================================
+# Node.js / JavaScript
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+/.pnp
+.pnp.js
+
+# ============================================
+# Build Output
+# ============================================
+dist/
+build/
+public/build/
+*.egg-info/
+.vite/
+.parcel-cache/
+.turbo/
+.cache/
+
+# ============================================
+# Python — Bytecode & Compiled Files
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# ============================================
+# Python — Virtual Environments
+# ============================================
+venv/
+env/
+.venv/
+ENV/
+venv.bak/
+env.bak/
+.auto-llm/
+.venv-auto-llm/
+.auto_llm/
+Pipfile.lock
+
+# ============================================
+# Python — Testing & Coverage
+# ============================================
+.pytest_cache/
+htmlcov/
+coverage/
+coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+# Loose test scripts at root of sub-projects (keep tests/ folders)
+test_*.py
+
+# ============================================
+# Flask / Django Instance Folders
+# ============================================
+instance/
+.webassets-cache
+
+# ============================================
+# AI / ML — Generated Data & Caches
+# ============================================
+# Chroma vector store (regenerated from MongoDB)
+chroma_db/
+# ElevenLabs / Edge-TTS audio cache
+voice/.tts_cache/
+Auto-LLM/analytics-llm/voice/.tts_cache/
+# Flask app cache files (ffcache*)
+Auto-LLM/analytics-llm/ffcache*
+
+# ============================================
+# Logs
+# ============================================
+logs/
+*.log
+
+# ============================================
+# Uploaded / User-Generated Files
+# ============================================
+backend/uploads/
+
+# ============================================
+# Credentials & Sensitive Scripts Output
+# ============================================
+backend/scripts/user_credentials.txt
+
+# ============================================
+# Backup & Broken Files
+# ============================================
+*.bak
+*.bak2
+*.bak3
+*.backup
+*.broken
+
+# ============================================
+# Database Files
+# ============================================
+*.sqlite3
+*.db
+
+# ============================================
+# Temporary Files
+# ============================================
+*.tmp
+*.temp
+
+# ============================================
+# IDEs & Editors
+# ============================================
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/css_custom_data.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+
+# ============================================
+# Auto-generated / Output Files
+# ============================================
+*_tasks.txt
+output/
+generated/

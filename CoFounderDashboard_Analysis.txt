@@ -1,0 +1,98 @@
+HUSL OS v2 - Co-founder Dashboard System Analysis
+==================================================
+
+1. OVERVIEW & AESTHETICS
+------------------------
+The Co-founder Dashboard is built with a premium "Dark Mode SaaS" aesthetic, heavily inspired by macOS UI design language and glassmorphism.
+
+- **Theme**: Deep dark theme using Zinc colors (bg-zinc-950 to bg-zinc-900).
+- **Glassmorphism**: Extensive use of simple backgrounds with high blur (`backdrop-blur-xl`, `bg-white/5`) to create depth.
+- **Micro-interactions**: Every element reacts to hover or interaction, mostly using `framer-motion` spring physics for natural "bounce".
+- **Layout**: A central dashboard area flanked by hidden "Peek Panels" on the left and right, with a floating Dock at the bottom.
+
+2. DASHBOARD PAGE LOGIC (`CoFounderDashboard.jsx`)
+--------------------------------------------------
+This page acts as the controller and layout container.
+
+- **State Management**:
+  - Manages views: 'dashboard' (Summary), 'sales', 'analytics', 'leave', 'attendance'.
+  - Fetches core data: Projects, Managers, Attendance summary, Sales dashboard data.
+  - Controls global modals: Create Project, Delete Project, Revenue Targets.
+
+- **Routing**:
+  - Does not use React Router for sub-views; instead, it conditionally renders components (e.g., `<CoFounderSummaryWidgets />` vs `<AnalyticsDashboard />`) to keep the session alive and transitions smooth without page reloads.
+
+- **Permissions**:
+  - Strictly role-gated (uses `useAuth`). Specific features like approving strategy or viewing financial data are protected.
+
+3. WIDGET SYSTEM (`CoFounderSummaryWidgets.jsx`)
+------------------------------------------------
+The core of the dashboard is an interactive, masonry-style grid of widgets.
+
+- **Draggable & Resizable Architecture**:
+  - **Logic**: Uses a custom implementation where dragging the bottom-right handle of a widget changes its `size` state ('small', 'medium', 'large').
+  - **Morphing UI**:
+    - **Small (1x1)**: Shows a single Key Performance Indicator (KPI) (e.g., Total Projects: 4).
+    - **Medium (2x1)**: Expands to show a trend graph or secondary stats alongside the KPI.
+    - **Large (2x2)**: Reveals full detailed lists or complex charts (e.g., list of active projects with deadlines).
+  - **Persistence**: Widget sizes are saved to `localStorage` (`cofounderDashboardWidgetSizes_v3`), so the layout remains customized even after refresh.
+
+- **Animations**:
+  - Uses `framer-motion`'s `<LayoutGroup>` and `layout` prop. When one widget expands, others automatically slide around it to accommodate the new space.
+
+4. CHARTS & GRAPHS STYLING
+--------------------------
+The system uses `recharts` but essentially "hacks" it for a premium look.
+
+- **Neon Glow Effects**:
+  - Charts are not just lines; they use SVG filters (defined in `<defs>`) to create a "bloom" or glowing effect, mimicking neon lights on a dark background.
+  - Example: `<filter id="attendanceNeonGlowPremium">` creates a soft white glow around the attendance pie chart.
+- **Gradients**:
+  - Area Charts use linear gradients that fade from opaque color at the top to transparent at the bottom, blending seamlessly into the dark background.
+- **Minimalism**:
+  - Axes ranges, grid lines, and ticks are often hidden or made extremely subtle (`opacity-5`) to reduce visual noise. Tooltips are custom-built glass panels (`MinimalTooltip`).
+
+5. LEFT PEEK PANEL (`LeftPeekPanel.jsx`)
+----------------------------------------
+A hidden sidebar for Team and AI communication.
+
+- **Interaction**: Sits off-screen (`x: -92%`) and slides in smoothly on hover.
+- **Features**:
+  - **Team Search**: Quick filter for employees.
+  - **AI Shortcut**: Direct access button to the RAG (Retrieval-Augmented Generation) Chat for querying business data.
+  - **Status Indicators**: Shows who is online/active via colored rings around avatars.
+
+6. RIGHT PEEK PANEL (`RightPeekPanel.jsx`)
+------------------------------------------
+A hidden sidebar for Utilities and Notifications.
+
+- **Logic**:
+  - **Auto-Refresh**: Polls for notifications every 30 seconds (`/notifications` endpoint).
+  - **Smart Calendar**: Fetches meeting data and dynamically highlights dates with dots.
+- **Features**:
+  - **Quick Tools**: 2x2 Grid of Apple-style cards (Notes, Handbook, Meetings, Scrum Log) that open centralized modals.
+  - **Notification Center**: Real-time business alerts (payments, deadlines). Notifications are interactive (click to mark read/navigate) and swipeable to dismiss.
+  - **Daily Insight**: A small AI-generated summary widget at the bottom.
+
+7. MACOS DOCK (`DockNav.jsx`)
+-----------------------------
+A replica of the Apple macOS Dock navigation.
+
+- **Physics Engine**:
+  - Instead of standard CSS hover scale, it uses a **Gaussian Falloff function**.
+  - **Math**: Calculates the distance of the mouse cursor from the center of *each* icon. Icons closer to the mouse scale up significantly, while neighbors scale slightly, creating the famous "wave" effect.
+- **Structure**:
+  - A fixed glassmorphism container (`backdrop-filter`) that expands horizontally as icons scale up.
+  - Active indicators (small glowing dots) below open apps.
+  - **Previews**: Hovering an item shows a UI preview (e.g., "Projects: 4 Active") floating above the dock.
+
+8. COLOR PALETTE
+----------------
+- **Background**:
+  - Surface: `#18181b` (Zinc 900)
+  - Deep: `#09090b` (Zinc 950)
+- **Accents**:
+  - **Emerald Green (Growth/Success)**: Used for Revenue, Completed Projects, Present Status.
+  - **Rose Red (Alerts)**: Used for Deadlines, Errors, Absent Status.
+  - **Amber/Orange (Warning)**: Used for 'On Hold' or approaching deadlines.
+  - **White/Gray**: Used for primary text and subtle borders.

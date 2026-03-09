@@ -1,0 +1,506 @@
+/* Quill editor styles - must be imported first */
+@import 'react-quill/dist/quill.snow.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: oklch(1.0000 0 0);
+    --foreground: oklch(0.1884 0.0128 248.5103);
+    --card: oklch(0.9784 0.0011 197.1387);
+    --card-foreground: oklch(0.1884 0.0128 248.5103);
+    --popover: oklch(1.0000 0 0);
+    --popover-foreground: oklch(0.1884 0.0128 248.5103);
+    --primary: oklch(0.6723 0.1606 244.9955);
+    --primary-foreground: oklch(1.0000 0 0);
+    --secondary: oklch(0.1884 0.0128 248.5103);
+    --secondary-foreground: oklch(1.0000 0 0);
+    --muted: oklch(0.9222 0.0013 286.3737);
+    --muted-foreground: oklch(0.1884 0.0128 248.5103);
+    --accent: oklch(0.9392 0.0166 250.8453);
+    --accent-foreground: oklch(0.6723 0.1606 244.9955);
+    --destructive: oklch(0.6188 0.2376 25.7658);
+    --destructive-foreground: oklch(1.0000 0 0);
+    --border: oklch(0.9317 0.0118 231.6594);
+    --input: oklch(0.9809 0.0025 228.7836);
+    --ring: oklch(0.6818 0.1584 243.3540);
+    --chart-1: oklch(0.6723 0.1606 244.9955);
+    --chart-2: oklch(0.6907 0.1554 160.3454);
+    --chart-3: oklch(0.8214 0.1600 82.5337);
+    --chart-4: oklch(0.7064 0.1822 151.7125);
+    --chart-5: oklch(0.5919 0.2186 10.5826);
+    --sidebar: oklch(0.9784 0.0011 197.1387);
+    --sidebar-foreground: oklch(0.1884 0.0128 248.5103);
+    --sidebar-primary: oklch(0.6723 0.1606 244.9955);
+    --sidebar-primary-foreground: oklch(1.0000 0 0);
+    --sidebar-accent: oklch(0.9392 0.0166 250.8453);
+    --sidebar-accent-foreground: oklch(0.6723 0.1606 244.9955);
+    --sidebar-border: oklch(0.9271 0.0101 238.5177);
+    --sidebar-ring: oklch(0.6818 0.1584 243.3540);
+    --font-sans: Open Sans, sans-serif;
+    --font-serif: Georgia, serif;
+    --font-mono: Menlo, monospace;
+    --radius: 1.3rem;
+  }
+
+  .dark {
+    --background: oklch(0 0 0);
+    --foreground: oklch(0.9328 0.0025 228.7857);
+    --card: oklch(0.2097 0.0080 274.5332);
+    --card-foreground: oklch(0.8853 0 0);
+    --popover: oklch(0 0 0);
+    --popover-foreground: oklch(0.9328 0.0025 228.7857);
+    --primary: oklch(0.6692 0.1607 245.0110);
+    --primary-foreground: oklch(1.0000 0 0);
+    --secondary: oklch(0.9622 0.0035 219.5331);
+    --secondary-foreground: oklch(0.1884 0.0128 248.5103);
+    --muted: oklch(0.2090 0 0);
+    --muted-foreground: oklch(0.5637 0.0078 247.9662);
+    --accent: oklch(0.1928 0.0331 242.5459);
+    --accent-foreground: oklch(0.6692 0.1607 245.0110);
+    --destructive: oklch(0.6188 0.2376 25.7658);
+    --destructive-foreground: oklch(1.0000 0 0);
+    --border: oklch(0.2674 0.0047 248.0045);
+    --input: oklch(0.3020 0.0288 244.8244);
+    --ring: oklch(0.6818 0.1584 243.3540);
+    --chart-1: oklch(0.6723 0.1606 244.9955);
+    --chart-2: oklch(0.6907 0.1554 160.3454);
+    --chart-3: oklch(0.8214 0.1600 82.5337);
+    --chart-4: oklch(0.7064 0.1822 151.7125);
+    --chart-5: oklch(0.5919 0.2186 10.5826);
+    --sidebar: oklch(0.2097 0.0080 274.5332);
+    --sidebar-foreground: oklch(0.8853 0 0);
+    --sidebar-primary: oklch(0.6818 0.1584 243.3540);
+    --sidebar-primary-foreground: oklch(1.0000 0 0);
+    --sidebar-accent: oklch(0.1928 0.0331 242.5459);
+    --sidebar-accent-foreground: oklch(0.6692 0.1607 245.0110);
+    --sidebar-border: oklch(0.3795 0.0220 240.5943);
+    --sidebar-ring: oklch(0.6818 0.1584 243.3540);
+    --font-sans: Open Sans, sans-serif;
+    --font-serif: Georgia, serif;
+    --font-mono: Menlo, monospace;
+    --radius: 1.3rem;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--muted-foreground);
+  }
+
+  /* Custom scrollbar utility class */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Remove focus outline from charts and SVG elements */
+  svg:focus,
+  svg *:focus,
+  .recharts-wrapper:focus,
+  .recharts-wrapper *:focus,
+  .recharts-surface:focus,
+  [role="img"]:focus {
+    outline: none !important;
+  }
+
+  /* Prevent background scroll when modal/overlay is open */
+  body.modal-open,
+  body.overlay-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Ensure modals and overlays are scrollable */
+  .modal-content,
+  .overlay-content {
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+}
+
+@layer components {
+
+  .dark-card {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    @apply rounded-xl border;
+    border-color: var(--border);
+    box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.4);
+  }
+
+  .dark-card-elevated {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    @apply rounded-xl border shadow-lg;
+    border-color: var(--border);
+  }
+
+  .dark-card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .dark-card-hover:hover {
+    @apply shadow-xl;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  /* Stat Card with accent */
+  .stat-card {
+    @apply dark-card dark-card-hover p-6 relative overflow-hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    opacity: 0.8;
+  }
+
+  /* Dashboard card */
+  .dashboard-card {
+    @apply dark-card p-6;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    @apply font-semibold py-2.5 px-5 rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 relative overflow-hidden;
+  }
+
+  .btn-secondary {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    @apply font-semibold py-2.5 px-5 rounded-xl transition-all duration-300 border;
+    border-color: var(--border);
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-ghost {
+    color: var(--muted-foreground);
+    @apply font-medium py-2 px-4 rounded-lg transition-all duration-200;
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-lg transition-all duration-200;
+    color: var(--muted-foreground);
+  }
+
+  .btn-icon:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
+
+  .input-modern {
+    background-color: var(--background);
+    color: var(--foreground);
+    border-color: var(--input);
+    @apply w-full px-4 py-3 rounded-xl border transition-all duration-300;
+  }
+
+  .input-modern::placeholder {
+    color: var(--muted-foreground);
+  }
+
+  .input-modern:focus {
+    @apply outline-none ring-1;
+    border-color: var(--ring);
+    --tw-ring-color: var(--ring);
+  }
+
+  .dark-table {
+    @apply w-full;
+  }
+
+  .dark-table thead {
+    background-color: var(--muted);
+    opacity: 0.5;
+  }
+
+  .dark-table th {
+    color: var(--muted-foreground);
+    border-color: var(--border);
+    @apply px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider border-b;
+  }
+
+  .dark-table tbody tr {
+    border-color: var(--border);
+    @apply border-b transition-colors duration-200;
+    border-bottom-color: oklch(from var(--border) l c h / 0.5);
+    /* translucent border */
+  }
+
+  .dark-table tbody tr:hover {
+    background-color: oklch(from var(--muted) l c h / 0.3);
+  }
+
+  .dark-table td {
+    color: var(--foreground);
+    @apply px-6 py-4 text-sm;
+  }
+
+  .status-pill {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-success {
+    background-color: oklch(from #10b981 l c h / 0.1);
+    color: #10b981;
+    border: 1px solid oklch(from #10b981 l c h / 0.2);
+  }
+
+  .status-warning {
+    background-color: oklch(from #f59e0b l c h / 0.1);
+    color: #f59e0b;
+    border: 1px solid oklch(from #f59e0b l c h / 0.2);
+  }
+
+  .status-danger {
+    background-color: oklch(from #ef4444 l c h / 0.1);
+    color: #ef4444;
+    border: 1px solid oklch(from #ef4444 l c h / 0.2);
+  }
+
+  .status-info {
+    background-color: oklch(from #3b82f6 l c h / 0.1);
+    color: #3b82f6;
+    border: 1px solid oklch(from #3b82f6 l c h / 0.2);
+  }
+
+  .status-pending {
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+    border: 1px solid var(--border);
+  }
+
+  .dark-sidebar {
+    background-color: var(--sidebar);
+    border-color: var(--sidebar-border);
+    color: var(--sidebar-foreground);
+    @apply border-r;
+  }
+
+  .sidebar-item {
+    color: oklch(from var(--sidebar-foreground) l c h / 0.7);
+    @apply flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200;
+  }
+
+  .sidebar-item:hover {
+    background-color: var(--sidebar-accent);
+    color: var(--sidebar-accent-foreground);
+  }
+
+  .sidebar-item.active {
+    background-color: var(--sidebar-accent);
+    color: var(--sidebar-accent-foreground);
+    @apply shadow-sm;
+  }
+
+  .dark-header {
+    background-color: var(--background);
+    border-color: var(--border);
+    color: var(--foreground);
+    @apply border-b;
+  }
+
+  .gradient-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  /* ============================================
+   * macOS-style Dock Navigation Styles
+   * ============================================ */
+
+  .dock-container {
+    /* Enhance glassmorphism with better browser support */
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    background: linear-gradient(to bottom,
+        rgba(30, 30, 40, 0.75),
+        rgba(20, 20, 30, 0.85));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .dock-item {
+    /* Base state for dock icons */
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    will-change: transform;
+  }
+
+  .dock-item:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+    border-radius: 12px;
+  }
+
+  /* Glow effect for active dock items */
+  .shadow-glow {
+    box-shadow:
+      0 0 6px rgba(255, 255, 255, 0.8),
+      0 0 12px rgba(255, 255, 255, 0.4),
+      0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .shadow-glow-sm {
+    box-shadow:
+      0 0 4px rgba(255, 255, 255, 0.6),
+      0 0 8px rgba(255, 255, 255, 0.3);
+  }
+
+  /* Ambient dock glow animation */
+  @keyframes dock-ambient-pulse {
+
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .dock-ambient-glow {
+    animation: dock-ambient-pulse 4s ease-in-out infinite;
+  }
+
+  /* Subtle bounce animation for dock appearance */
+  @keyframes dock-bounce-in {
+    0% {
+      transform: translateY(100%) translateX(-50%);
+      opacity: 0;
+    }
+
+    60% {
+      transform: translateY(-10%) translateX(-50%);
+      opacity: 1;
+    }
+
+    80% {
+      transform: translateY(5%) translateX(-50%);
+    }
+
+    100% {
+      transform: translateY(0) translateX(-50%);
+    }
+  }
+
+  .dock-bounce-enter {
+    animation: dock-bounce-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  /* Reduced motion - disable animations */
+  @media (prefers-reduced-motion: reduce) {
+
+    .dock-item,
+    .dock-container {
+      transition: none !important;
+      animation: none !important;
+    }
+
+    .dock-bounce-enter {
+      animation: none;
+      transform: translateY(0) translateX(-50%);
+      opacity: 1;
+    }
+  }
+
+  /* High contrast mode adjustments */
+  @media (prefers-contrast: high) {
+    .dock-container {
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .dock-item:focus-visible {
+      outline-width: 3px;
+    }
+  }
+
+  /* Dark theme dock enhancements */
+  .dark .dock-container {
+    background: linear-gradient(to bottom,
+        rgba(20, 20, 30, 0.8),
+        rgba(10, 10, 20, 0.9));
+  }
+
+  /* Tooltip styles */
+  .dock-tooltip {
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* Shimmer animation for progress bars */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+  }
+}

@@ -1,0 +1,49 @@
+﻿≡ƒöì Checking database for ALL users...
+
+≡ƒôè Total users in database: 3
+
+====================================================================================================
+
+Γ£à FOUND 3 USERS:
+
+1. Chief Executive
+   ≡ƒôº Email: ceo@hustlesystem.com
+   ≡ƒöæ Original Password: CEO@2024!Secure
+   ≡ƒæö Role: ceo
+   ≡ƒÆ╝ Job Category: developer
+   ≡ƒåö Employee ID: CEO001
+   ≡ƒÅó Department: Executive
+   Γ£à Active: Yes
+
+2. Manager User
+   ≡ƒôº Email: manager@hustlesystem.com
+   ≡ƒöæ Original Password: Manager@2024
+   ≡ƒæö Role: manager
+   ≡ƒÆ╝ Job Category: developer
+   ≡ƒåö Employee ID: MGR001
+   ≡ƒÅó Department: Management
+   Γ£à Active: Yes
+
+3. HR User
+   ≡ƒôº Email: hr@gmail.com
+   ≡ƒöæ Original Password: hr@1234
+   ≡ƒæö Role: hr
+   ≡ƒÆ╝ Job Category: developer
+   ≡ƒåö Employee ID: HR001
+   ≡ƒÅó Department: Human Resources
+   Γ£à Active: Yes
+
+====================================================================================================
+
+≡ƒôï USERS BY ROLE:
+
+CEO: 1 user(s)
+  - ceo@hustlesystem.com (Chief Executive)
+
+MANAGER: 1 user(s)
+  - manager@hustlesystem.com (Manager User)
+
+HR: 1 user(s)
+  - hr@gmail.com (HR User)
+
+Γ£à Database connection closed.

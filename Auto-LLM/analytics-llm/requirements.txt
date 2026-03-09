@@ -1,0 +1,113 @@
+# =============================================================================
+# Analytics LLM - Voice Agent Requirements
+# GPU/CUDA Optimized for fast STT (Speech-to-Text)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Core Flask & Server
+# -----------------------------------------------------------------------------
+flask==3.0.0
+flask-cors==4.0.0
+flask-socketio>=5.3.0
+flask-sock>=0.7.0             # Native WebSocket support
+simple-websocket>=1.0.0       # WebSocket implementation for eventlet
+eventlet>=0.33.0              # Required for SocketIO async mode
+
+# -----------------------------------------------------------------------------
+# Database
+# -----------------------------------------------------------------------------
+pymongo==4.6.0
+
+# -----------------------------------------------------------------------------
+# Configuration & Utilities
+# -----------------------------------------------------------------------------
+python-dotenv==1.0.0
+requests==2.31.0
+aiofiles>=23.0.0              # Async file operations
+
+# -----------------------------------------------------------------------------
+# SPEECH-TO-TEXT (STT) - GPU Optimized
+# -----------------------------------------------------------------------------
+# Faster-Whisper uses CTranslate2 for 4x faster inference
+# On GPU (CUDA): ~1-2 seconds for transcription
+# On CPU: ~6-8 seconds for transcription
+faster-whisper>=1.0.0
+
+# PyTorch with CUDA support
+# NOTE: For GPU support, install PyTorch with CUDA separately:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# OR for CUDA 12.1:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch>=2.1.0
+
+# CTranslate2 for optimized Whisper inference
+ctranslate2>=4.0.0
+
+# Hugging Face for model loading
+transformers>=4.36.0
+accelerate>=0.25.0
+
+# Audio processing
+pydub>=0.25.0
+av>=12.0.0                    # FFmpeg bindings for audio decoding
+
+# -----------------------------------------------------------------------------
+# TEXT-TO-SPEECH (TTS)
+# -----------------------------------------------------------------------------
+# ElevenLabs for high-quality TTS (requires API key)
+elevenlabs>=1.0.0
+
+# Edge TTS as fallback (free, no API key)
+edge-tts>=6.1.9
+
+# -----------------------------------------------------------------------------
+# RAG (Retrieval Augmented Generation)
+# -----------------------------------------------------------------------------
+# Vector database for document retrieval
+chromadb==0.4.22
+
+# Embeddings
+sentence-transformers>=2.7.0
+
+# LangChain for RAG pipeline
+langchain>=0.1.6
+langchain-community>=0.0.20
+
+# -----------------------------------------------------------------------------
+# LLM API
+# -----------------------------------------------------------------------------
+openai>=1.0.0                 # OpenRouter uses OpenAI-compatible API
+
+# -----------------------------------------------------------------------------
+# Optional: For streaming STT (Hugging Face Transformers)
+# -----------------------------------------------------------------------------
+# soundfile>=0.12.0           # Audio file I/O
+# librosa>=0.10.0             # Audio analysis
+
+# =============================================================================
+# GPU SETUP INSTRUCTIONS
+# =============================================================================
+# 
+# 1. Install NVIDIA CUDA Toolkit (11.8 or 12.1):
+#    https://developer.nvidia.com/cuda-downloads
+#
+# 2. Install cuDNN:
+#    https://developer.nvidia.com/cudnn
+#
+# 3. Install PyTorch with CUDA (AFTER installing base requirements):
+#    
+#    For CUDA 11.8:
+#    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+#    
+#    For CUDA 12.1:
+#    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+#
+# 4. Verify GPU detection:
+#    python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
+#
+# 5. Expected STT performance with GPU:
+#    - "medium" model: ~1-2 seconds (vs 6-8 seconds on CPU)
+#    - "large" model: ~2-3 seconds (vs 15-20 seconds on CPU)
+#
+# =============================================================================
+#cd Auto-LLM   cd analytics-llm   venv/Scripts/activate
