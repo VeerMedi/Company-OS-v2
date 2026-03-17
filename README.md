@@ -1,4 +1,4 @@
-# The Hustle OS v1
+# Compamy-OS
 
 A comprehensive business management system with AI-driven analytics, RAG (Retrieval Augmented Generation), and voice integration.
 
