@@ -5,17 +5,19 @@ Fixes common transcription errors in business context
 from openai import OpenAI
 from typing import Dict, Any
 import os
+from config import AnalyticsLLMConfig
 
 
 class STTCorrector:
     """Corrects STT transcription errors using lightweight LLM"""
-    
+
     def __init__(self):
+        self.config = AnalyticsLLMConfig()
         self.client = OpenAI(
-            base_url="https://openrouter.ai/api/v1",
-            api_key=os.getenv("OPENROUTER_API_KEY")
+            base_url=self.config.CEREBRAS_BASE_URL,
+            api_key=self.config.CEREBRAS_API_KEY
         )
-        self.model = "openai/gpt-4o-mini"  # Fast and cheap
+        self.model = self.config.MODEL_NAME  # Using configured Cerebras model
         
         # Common business domain corrections
         self.correction_prompt = """You are fixing speech-to-text errors in business queries.

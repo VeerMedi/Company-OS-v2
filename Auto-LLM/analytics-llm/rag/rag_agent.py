@@ -16,21 +16,21 @@ class RAGAgent:
         self.config = AnalyticsLLMConfig()
         self.retriever = DirectMongoRetriever()
         
-        # Configure OpenRouter client (uses OpenAI-compatible API)
+        # Configure Cerebras client (uses OpenAI-compatible API)
         self.client = OpenAI(
-            base_url=self.config.OPENROUTER_BASE_URL,
-            api_key=self.config.OPENROUTER_API_KEY
+            base_url=self.config.CEREBRAS_BASE_URL,
+            api_key=self.config.CEREBRAS_API_KEY
         )
-        
+
         # Initialize fast-path optimizer for common queries
         try:
             from utils.fast_path_optimizer import FastPathOptimizer
             self.fast_path = FastPathOptimizer(self.retriever.data_fetcher)
-            print("✓ RAG Agent initialized with OpenRouter + Fast-Path Optimizer")
+            print("✓ RAG Agent initialized with Cerebras + Fast-Path Optimizer")
         except ImportError as e:
             print(f"⚠️  Fast-path optimizer not available: {e}")
             self.fast_path = None
-            print("✓ RAG Agent initialized with OpenRouter")
+            print("✓ RAG Agent initialized with Cerebras")
     
     def query(
         self,
@@ -236,7 +236,7 @@ VOICE MODE - CRITICAL RULES:
         return_usage: bool = False
     ) -> Any:
         """
-        Generate answer using OpenRouter with retrieved context
+        Generate answer using Cerebras with retrieved context
         """
         # Build messages for chat completion
         messages = self._build_messages(question, context, conversation_history, is_voice)
@@ -245,7 +245,7 @@ VOICE MODE - CRITICAL RULES:
         # Voice responses should be concise anyway
         voice_max_tokens = 150 if is_voice else self.config.MAX_TOKENS
         
-        # Generate response using OpenRouter
+        # Generate response using Cerebras
         response = self.client.chat.completions.create(
             model=self.config.MODEL_NAME,
             messages=messages,

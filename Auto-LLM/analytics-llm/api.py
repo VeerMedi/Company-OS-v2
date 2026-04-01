@@ -591,7 +591,7 @@ cache_timestamps = {}
 
 def generate_organizational_insights(analytics_data, category):
     """
-    Generate comprehensive organizational insights using OpenRouter LLM
+    Generate comprehensive organizational insights using Cerebras LLM
     
     This creates a detailed overview including:
     - Organization overview specific to the category
@@ -717,10 +717,10 @@ Please provide:
 Format your response in clear Markdown with headers, bullet points, and emphasis where appropriate. Be specific and data-driven in your analysis."""
 
     try:
-        # Use OpenRouter API
+        # Use Cerebras API
         client = OpenAI(
-            base_url=config.OPENROUTER_BASE_URL,
-            api_key=config.OPENROUTER_API_KEY
+            base_url=config.CEREBRAS_BASE_URL,
+            api_key=config.CEREBRAS_API_KEY
         )
         
         response = client.chat.completions.create(
